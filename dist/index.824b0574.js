@@ -440,14 +440,16 @@ class App {
   The App class is meant to emulate an app that may use the webgl visualization as a component
   */
   constructor() {
-    const container = document.querySelector(".content");
-    this.visualization = new _epivizGlDefault.default(container);
-    this.visualization.addToDom();
+    const container1 = document.querySelector(".plot-1");
+    const container2 = document.querySelector(".plot-2");
+    this.visualization1 = new _epivizGlDefault.default(container1);
+    this.visualization2 = new _epivizGlDefault.default(container2);
+    this.visualization1.addToDom();
+    this.visualization2.addToDom();
     this.store = _storeDefault.default;
     this.store.subscribe(this.subscription.bind(this));
     const toolbar = new _toolbarDefault.default(this.store.dispatch);
     toolbar.init();
-    document.getElementById("refresh-schema").onclick = this.onSchemaSubmit.bind(this);
     window.addEventListener("resize", this.onWindowResize.bind(this));
   }
   /**
@@ -459,19 +461,19 @@ class App {
     const currState = this.store.getState();
     const schema = _store.getIfChanged("schema");
     if (schema) {
-      document.getElementById("schema-editor").value = schema;
+      this.visualization1.setSchema(JSON.parse(schema));
+      this.visualization2.setSchema(JSON.parse(schema));
     }
-    this.visualization.setViewOptions({
+    this.visualization1.setViewOptions({
+      ...currState
+    });
+    this.visualization2.setViewOptions({
       ...currState
     });
   }
-  onSchemaSubmit() {
-    const schemaAsString = document.getElementById("schema-editor").value;
-    const schema = JSON.parse(schemaAsString);
-    this.visualization.setSchema(schema);
-  }
   onWindowResize() {
-    this.visualization.setCanvasSize(this.visualization.parent.clientWidth, this.visualization.parent.clientHeight);
+    this.visualization1.setCanvasSize(this.visualization1.parent.clientWidth, this.visualization1.parent.clientHeight);
+    this.visualization2.setCanvasSize(this.visualization2.parent.clientWidth, this.visualization2.parent.clientHeight);
   }
 }
 document.addEventListener("DOMContentLoaded", () => {
@@ -494,7 +496,7 @@ var _examplesBoxTrack = require("../examples/box-track");
 var _examplesBoxTrackDefault = _parcelHelpers.interopDefault(_examplesBoxTrack);
 var _examplesLineTrack = require("../examples/line-track");
 var _examplesLineTrackDefault = _parcelHelpers.interopDefault(_examplesLineTrack);
-const exampleMap = new Map([["area-chart", _examplesAreaChartDefault.default], ["double-line-plot", doubleLinePlot], ["line-plot", _examplesLinePlotDefault.default], ["stacked-area-chart", stackedAreaChart], ["tick-chart", tickChart], ["tsne", tsne], ["tsne-10th", _examplesTsne10thDefault.default], ["tsne-100th", tsne100], ["inline-data", inlineData], ["double-inline-data", doubleInlineData], ["tiny-scatter", tinyScatter], ["scatter-grid", scatterGrid], ["heatmap", heatmap], ["signed-bar-chart", signedBarChart], ["vertical-signed-bar-chart", verticalSignedBarChart], ["arc-track", _examplesArcTrackDefault.default], ["box-track", _examplesBoxTrackDefault.default], ["line-track", _examplesLineTrackDefault.default], ["all-tracks", allTracks], ["scatter-grid-margins", scatterGridMargins]]);
+const exampleMap = new Map([["area-chart", _examplesAreaChartDefault.default], ["line-plot", _examplesLinePlotDefault.default], ["tsne-10th", _examplesTsne10thDefault.default], ["arc-track", _examplesArcTrackDefault.default], ["box-track", _examplesBoxTrackDefault.default], ["line-track", _examplesLineTrackDefault.default]]);
 class Toolbar {
   /**
   * A class meant to handle changing options on the scatter plot

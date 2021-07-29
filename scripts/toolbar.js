@@ -9,25 +9,12 @@ import lineTrack from "../examples/line-track";
 
 const exampleMap = new Map([
   ["area-chart", areaChart],
-  ["double-line-plot", doubleLinePlot],
   ["line-plot", linePlot],
-  ["stacked-area-chart", stackedAreaChart],
-  ["tick-chart", tickChart],
-  ["tsne", tsne],
   ["tsne-10th", tsne10],
-  ["tsne-100th", tsne100],
-  ["inline-data", inlineData],
-  ["double-inline-data", doubleInlineData],
-  ["tiny-scatter", tinyScatter],
-  ["scatter-grid", scatterGrid],
-  ["heatmap", heatmap],
-  ["signed-bar-chart", signedBarChart],
-  ["vertical-signed-bar-chart", verticalSignedBarChart],
+
   ["arc-track", arcTrack],
   ["box-track", boxTrack],
   ["line-track", lineTrack],
-  ["all-tracks", allTracks],
-  ["scatter-grid-margins", scatterGridMargins],
 ]);
 
 class Toolbar {

@@ -1,14 +1,14 @@
 @import "./font.css";
 @import "./toolbar.css";
-@import "./editor.css";
 
-.content {
+.plot-1,
+.plot-2 {
   padding: 1em;
 }
 
 .panes {
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 50% 50%;
   height: 85%;
 }
 

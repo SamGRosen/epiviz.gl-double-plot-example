@@ -30,23 +30,13 @@
   box-shadow: 0 0 5px black;
 }
 
-.json-editor {
-  padding: 1em;
-}
-
-.json-editor > textarea {
-  height: 70%;
-  width: 80%;
-  margin: 5%;
-  resize: none;
-}
-
-.content {
+.plot-1,
+.plot-2 {
   padding: 1em;
 }
 .panes {
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 50% 50%;
   height: 85%;
 }
 html,
