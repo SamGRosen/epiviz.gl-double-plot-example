@@ -1,0 +1,30 @@
+{
+  "name": "epiviz.gl",
+  "version": "1.0.0",
+  "repository": "https://github.com/epiviz/epiviz.gl",
+  "homepage": "https://github.com/epiviz/epiviz.gl",
+  "author": "Sam Rosen",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "app": "dist-app/index.html",
+  "targets": {
+    "app": {
+      "context": "browser",
+      "publicUrl": "./",
+      "optimize": false
+    }
+  },
+  "scripts": {
+    "start": "parcel serve index.html --open",
+    "build": "rm -rf dist && parcel build index.html --target app"
+  },
+  "dependencies": {
+    "epiviz.gl": "file:../webgl-point-interactivity-demo"
+  },
+  "devDependencies": {
+    "@reduxjs/toolkit": "^1.6.0",
+    "parcel": "2.0.0-beta.2"
+  }
+}
